@@ -3,16 +3,23 @@ User = new Meteor.Collection('users');
 Meteor.methods({
   sign_up_user: function(username, password, type){
       var current_user = User.findOne({'username': username});
+
       if (!current_user) {
-        current_user = Meteor.call('create_user',username, name, password, type);
+        current_user = Meteor.call('create_user',username, type);
       } else if (current_user.password != password) {
-        notify("Incorrect password");
-        return;
+        //change the login template to display invalid password
+        throw new Meteor.error(404, 'Password Incorrect');
+        return 'Password Incorrect';
       }
-      Meteor.call('login_user',current_user, password);
+
+      Meteor.call('login_user', current_user, password, function(error, result){
+       if(error) {
+          throw new Meteor.error('500', result)
+        }
+      });
   },
-  create_user: function(username, name, type){
-      new_user = {'username': username, 'name': name, 'type': type};
+  create_user: function(username, type){
+      new_user = {'username': username, 'type': type};
       var id = null;
       if (type == 'teacher') {
         id = Teacher.insert(new_user);
