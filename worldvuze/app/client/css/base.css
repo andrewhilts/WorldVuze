@@ -34,7 +34,7 @@
   float:right;
 }
 
-.profile {
+.profile:not(a) {
   background:rgba(182,205,146,0.3);
   padding:10px 20px;
 }

@@ -33,15 +33,18 @@ Meteor.methods({
       return current_user;
   },
   create_user: function(username, type){
-      var new_user = {'username': username, 'type': type};
-      var id = null;
-      if (type == 'teacher') {
-        id = Teacher.insert(new_user);
-      } else {
-        id = Student.insert(new_user);
-      }
-      new_user._id = id;
-      return new_user;
+    //temporary teacher
+    var teacher = Teacher.findOne({'username': 'admin'});
+
+    var new_user = {'username': username, 'type': type, 'teacher_id': teacher._id};
+    var id = null;
+    if (type == 'teacher') {
+      id = Teacher.insert(new_user);
+    } else {
+      id = Student.insert(new_user);
+    }
+    new_user._id = id;
+    return new_user;
   },
   login_user: function (current_user, password) {
     User.insert({'type_id': current_user._id, 'username': current_user.username, 'password': password, 'type': current_user.type});
