@@ -128,7 +128,9 @@ Template.user_profile.getProfile = function(){
 
 Meteor.startup(function () {
   if (!Teacher.find({'username': 'admin'}).fetch().length) {
-    Teacher.insert({'username': 'admin'});
+    teacher_id = Teacher.insert({'username': 'admin'});
+    activity_id = Activity.insert({'type': 'question', 'creator_id': teacher_id, 'text': 'What is the problem with water quality in Ontario?', 'username': 'admin', 'user_type': 'teacher'})
+    Teacher.update({'_id': teacher_id}, {$addToSet: {'activities': [activity_id]}});
   }
 
   if(Session.get('WorldVuze')) {
