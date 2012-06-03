@@ -1,8 +1,24 @@
 <template name="nav">
-<nav class="">
-    <ul class="span12 nav nav-pills">
-    <li class="active"><a href="">Test</a></li>
-    <li><a href="">Test</a></li>
-  </ul>
-</nav>
+<div class="navbar main-nav">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">
+  WorldVuze
+</a>
+  <nav id="mainNav">
+      <ul class="nav">
+  <li class="active">
+    <a href="#">Class 7B</a>
+  </li>
+  <li><a href="#">Questions</a></li>
+  <li><a href="#">Community</a></li>
+  <li><a href="#">Help</a></li>
+</ul>
+  </nav>
+  {{> user-profile-nav }}
+  {{> search-bar }}
+    </div>
+  </div>
+    
+</div>
 </template>

@@ -1,0 +1,45 @@
+.topic-list {
+  background: #ffffff-#220;
+  padding:10px;
+}
+
+.topic-list > li {
+  position:relative;
+  padding:10px 15px;
+}
+
+.topic-list > li > .time {
+  font-size:0.8em;
+  position:absolute;
+  right:2.7em;
+  top:0.5em;
+}
+
+.topic-list > li > .watch {
+  position:absolute;
+  right:0.5em;
+  top:0.5em;
+  opacity:0.2;
+}
+.topic-list > li > .watch:hover {
+  opacity:1;
+}
+.topic-list > li > .watch:hover i {
+background-position:-120px -120px;
+}
+
+.topic-list > li.collapsed > .watch {
+  opacity:0.8;
+}
+.topic-list > li.collapsed > .watch:hover {
+  opacity:1;
+}
+.topic-list > li.collapsed > .watch:hover i {
+  background-position:-96px -120px;
+}
+
+.topic-list > li > .question {
+  display:block;
+  font-size:1.3em;
+  color:lighten(#000,50%);
+}

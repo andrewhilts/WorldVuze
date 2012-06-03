@@ -1,13 +1,37 @@
-  <template name="login">
-      <form class="well form-inline">
-            <input style="height:30px; font-size:20px" type="text" placeholder="Email">
-            <br/>
-            <input style="height:30px; font-size:20px" type="password" class="input-large input-big" placeholder="Password">
-                        <br/>
-            <label class="checkbox">
-
-                <input style="float:left" type="checkbox"> Remember me
-            </label>
-            <button type="submit" class="btn">Sign in</button>
-    </form>
+<template name="login">
+    <div id="login">
+        <form name="login" class="well form-inline form">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="control-group">
+                    <label class="control-label" for="username">Username</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" name="username">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="username">Password</label>
+                    <div class="controls">
+                        <input type="password" class="input-xlarge" name="password">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="username">Type</label>
+                    <div class="controls">
+                        <select name="type">
+                            <option value="student" class="input-xlarge">Student</option>
+                            <option value="teacher">Teacher</option>
+                        </select>
+                        
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="control-group">
+                <button type="submit" class="btn">Sign in</button>
+            </div>   
+        </form>
+    </div>  
 </template>

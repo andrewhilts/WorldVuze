@@ -18,23 +18,4 @@ Meteor.methods({
 });
 
 //Publish initial templates here and create public interface in case not logged in and check session
-if (Meteor.is_server) {
-
-  Meteor.publish('players', function () {
-    return Players.find({idle: false});
-  });
-
-  // publish single games
-  Meteor.publish('games', function (id) {
-    return Games.find({_id: id});
-  });
-
-  // publish all my words and opponents' words that the server has
-  // scored as good.
-  Meteor.publish('words', function (game_id, player_id) {
-    return Words.find({$or: [{game_id: game_id, state: 'good'},
-                             {player_id: player_id}]});
-  });
-
-}
 
