@@ -10,18 +10,8 @@
 </head>
 <body>
 {{> header}}
-<div role="main">
-    <form class="well form-inline">
-        <input style="height:30px; font-size:20px" type="text" placeholder="Email">
-        <br/>
-        <input style="height:30px; font-size:20px" type="password" class="input-large input-big" placeholder="Password">
-                    <br/>
-        <label class="checkbox">
-
-            <input style="float:left" type="checkbox"> Remember me
-        </label>
-        <button type="submit" class="btn">Sign in</button>
-</form>
+<div role="main container">
+    {{> login}}
 </div>
 {{> footer}}
 

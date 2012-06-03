@@ -1,0 +1,37 @@
+<template name="login">
+    <div id="login">
+        <form class="well form-inline form">
+            <fieldset>
+                <legend>Login</legend>
+                <div class="control-group">
+                    <label class="control-label" for="username">Username</label>
+                    <div class="controls">
+                        <input type="text" class="input-xlarge" name="username">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="username">Password</label>
+                    <div class="controls">
+                        <input type="password" class="input-xlarge" name="password">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="username">Type</label>
+                    <div class="controls">
+                        <select name="type">
+                            <option value="student" class="input-xlarge">Student</option>
+                            <option value="Teacher">Teacher</option>
+                        </select>
+                        
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="control-group">
+                <button type="submit" class="btn">Sign in</button>
+            </div>   
+        </form>
+    </div>  
+</template>
