@@ -1,0 +1,11 @@
+<template name="classrooms">
+    <ul class="classrooms">
+        {{#each classrooms}}
+            {{> classroom}}
+          {{/each}}
+    </li>
+</template>
+
+<template name="classroom">
+    <li id="{{classroom_id}}">{{classroom_name}}</li>
+</template>

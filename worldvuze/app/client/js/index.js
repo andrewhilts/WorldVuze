@@ -1,3 +1,18 @@
+$(document).ready(function(){
+  
+  $(document).delegate('.new_topic', 'click', function(event){
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.new_topic());
+  })
+
+  $(document).delegate('form[name=new_topic]', 'submit', function(event){
+      event.preventDefault();
+      var form = $('form[name=new_topic]')[0];
+      Meteor.call('post_new_question', form.question.value, Session.get('WorldVuze'));
+  })
+
+})
+
 // Attach events to keydown, keyup, and blur on "New list" input box.
 Template.login.events = {
   'submit form[name=login]': function(event) {
@@ -14,6 +29,21 @@ Template.nav.events = {
     event.preventDefault();
     $(document).find('[role=main]').replaceWith(Template.login());
     Session.set('WorldVuze', null);
+  },
+
+  'click .profile': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.user_profile({
+      'username': Session.get('WorldVuze').username
+    }));
+  },
+
+  'click .dashboard': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.dashboard({
+      'username': Session.get('WorldVuze').username,
+      'activities': Activity.find({})
+    }));
   }
 }
 
@@ -87,5 +117,11 @@ Template.question.getQuestions = function(){
 //////
 
 Meteor.startup(function () {
+  if(Session.get('WorldVuze')) {
+    $(document).find('[role=main]').replaceWith(Template.dashboard({
+      'username': Session.get('WorldVuze').username,
+      'activities': Activity.find({})
+    }));
+  }
 });
 
