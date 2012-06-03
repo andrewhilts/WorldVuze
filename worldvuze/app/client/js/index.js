@@ -1,10 +1,3 @@
-notify: function(input){
-  alert(input);
-},
-
-Meteor.methods({
-
-});
 // Attach events to keydown, keyup, and blur on "New list" input box.
 Template.login.events = {
   'submit form': function(event) {
