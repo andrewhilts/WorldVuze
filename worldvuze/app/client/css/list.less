@@ -8,7 +8,7 @@
   padding:10px 15px;
 }
 
-.topic-list > li > .time {
+.topic-list .user {
   font-size:0.8em;
   position:absolute;
   right:2.7em;
@@ -42,4 +42,26 @@ background-position:-120px -120px;
   display:block;
   font-size:1.3em;
   color:lighten(#000,50%);
+}
+
+.topic-list > li .replies {
+  position:absolute;
+  right:-320px;
+  top:0px;
+  width:300px;
+}
+
+.topic-list > li .replies .well {
+  margin:0;
+}
+
+.replies-list {
+  padding-top:10px;
+  margin-left:10px;
+  border-left:1px dotted #ccc;
+}
+
+.replies-list > li {
+  display:block;
+  margin-left:10px;
 }

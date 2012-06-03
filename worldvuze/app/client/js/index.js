@@ -1,3 +1,18 @@
+$(document).ready(function(){
+  
+  $(document).delegate('.new_topic', 'click', function(event){
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.new_topic());
+  })
+
+  $(document).delegate('form[name=new_topic]', 'submit', function(event){
+      event.preventDefault();
+      var form = $('form[name=new_topic]')[0];
+      Meteor.call('post_new_question', form.question.value, Session.get('WorldVuze'));
+  })
+
+})
+
 // Attach events to keydown, keyup, and blur on "New list" input box.
 Template.login.events = {
   'submit form[name=login]': function(event) {
@@ -9,11 +24,35 @@ Template.login.events = {
   }
 };
 
-T = function(){
+Template.nav.events = {
+  'click .logout': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.login());
+    Session.set('WorldVuze', null);
+  },
+
+  'click .profile': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.user_profile({
+      'username': Session.get('WorldVuze').username
+    }));
+  },
+
+  'click .dashboard': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.dashboard({
+      'username': Session.get('WorldVuze').username,
+      'activities': Activity.find({})
+    }));
+  }
+}
+
+Template.location.locations = function(){
   var list_of_locs = [];
 
   var get_location = function(location){
    // #add api to get latitude and longitude and return a hash with lat: and lng:
+
   };
 
   for(i=0; i< Teacher.count; i++){
@@ -28,18 +67,70 @@ T = function(){
 Template.location.build_map = function(lat,lng){
   //gmap.js library
   map.addMarker({
-  lat: lat,
-  lng: lng});
+  'lat': lat, 'lng': lng});
 };
+
+Template.question.events = {
+  'click .discuss': function(event) {
+    event.preventDefault();
+  }
+}
+
+Template.question.getQuestions = function(){
+  questions = [];
+  for(i=0; i<10; i++){
+    questions.push({
+      _id: Math.floor((Math.random()*10000)+1),
+      subject: "What's life like where I live?",
+      question: "What's life like where I live?",
+      replies: 12,
+      username: 'zim',
+      collapsed: "",
+      list_of_activities: {}
+    });
+  }
+  comments = [];
+  for(i=0; i<5; i++){
+    comments.push({
+      _id: Math.floor((Math.random()*10000)+1),
+      comment: "Wgdfyteasdf  dsaf asdf asf asf as asdaf as fdsaf dsaf dsafsa",
+      replies: 12,
+      username: 'zim',
+      collapsed: ""
+    });
+  }
+  questions[3].collapsed = "collapsed";
+  questions[4].list_of_activities = comments;
+  for(i in questions){
+    if(questions[i].list_of_activities.length > 0){
+      questions[i].hasReplies = true;
+    }
+    else{
+      questions[i].hasReplies = false;
+    }
+  }
+  return questions;
+};
+
+Template.user_profile.getProfile = function(){
+  return {
+    username: "Jane Doe",
+    age: 12,
+    location: "Toronto, ON",
+    school: "Bishop Strachan School"
+  };
+};
+
 //////
 ////// Initialization
 //////
 
 Meteor.startup(function () {
-  if (Session.get('WorldVuze')) {
-    console.log("logged in")
-  } else {
-    console.log('not logged in')
+  if(Session.get('WorldVuze')) {
+    $(document).find('[role=main]').replaceWith(Template.dashboard({
+      'username': Session.get('WorldVuze').username,
+      'activities': Activity.find({})
+    }));
   }
      $("#map").gMap({ markers: [{ latitude: 43.690893,
                               longitude: -79.408085,
@@ -47,3 +138,4 @@ Meteor.startup(function () {
                               popup: true }],
                   zoom: 12 });
 });
+
