@@ -57,6 +57,10 @@ Meteor.methods({
 
   'post_new_question': function(question, user) {
     var activity_id = Activity.insert({'type': 'question', 'username': user.username, 'user_type': user.type, 'text': question});
+      list_of_activities = Student.findOne(user._id).activities;
+      list_of_activities.push(activity_id);
+      Student.update({'_id': user._id}, {$addToSet: {'activities': list_of_activities}})
+
     if (Meteor.is_client) {
       $(document).find('[role=main]').replaceWith(Template.question({
         'activity': Activity.findOne({'_id': activity_id})
