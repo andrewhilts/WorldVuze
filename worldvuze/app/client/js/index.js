@@ -82,6 +82,15 @@ Template.question.getQuestions = function(){
   return questions;
 };
 
+Template.user_profile.getProfile = function(){
+  return {
+    username: "Jane Doe",
+    age: 12,
+    location: "Toronto, ON",
+    school: "Bishop Strachan School"
+  };
+};
+
 //////
 ////// Initialization
 //////
