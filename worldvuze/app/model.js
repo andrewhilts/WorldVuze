@@ -48,8 +48,7 @@ Meteor.methods({
     Session.set('WorldVuze', current_user);
 
     //change the template
-    $(document).find('[role=main]').empty();
-
+    $(document).find('[role=main]').replaceWith(Template.home);
   }
 });
 
