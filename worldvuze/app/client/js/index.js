@@ -37,6 +37,43 @@ Template.location.build_map = function(lat,lng){
   map.addMarker({
   'lat': lat, 'lng': lng});
 };
+
+
+Template.question.getQuestions = function(){
+  questions = [];
+  for(i=0; i<10; i++){
+    questions.push({
+      uid: Math.floor((Math.random()*10000)+1),
+      subject: "What's life like where I live?",
+      replies: 12,
+      username: 'zim',
+      collapsed: "",
+      list_of_activities: {}
+    });
+  }
+  comments = [];
+  for(i=0; i<5; i++){
+    comments.push({
+      uid: Math.floor((Math.random()*10000)+1),
+      text: "Wgdfyteasdf  dsaf asdf asf asf as asdaf as fdsaf dsaf dsafsa",
+      replies: 12,
+      username: 'zim',
+      collapsed: ""
+    });
+  }
+  questions[3].collapsed = "collapsed";
+  questions[4].list_of_activities = comments;
+  for(i in questions){
+    if(questions[i].list_of_activities.length > 0){
+      questions[i].hasReplies = true;
+    }
+    else{
+      questions[i].hasReplies = false;
+    }
+  }
+  return questions;
+};
+
 //////
 ////// Initialization
 //////
