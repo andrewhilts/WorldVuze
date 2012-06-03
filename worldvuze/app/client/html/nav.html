@@ -1,24 +1,20 @@
 <template name="nav">
-<div class="navbar main-nav">
-  <div class="navbar-inner">
-    <div class="container">
-      <a class="brand" href="#">
-  WorldVuze
-</a>
-  <nav id="mainNav">
-      <ul class="nav">
-  <li class="active">
-    <a href="#">Class 7B</a>
-  </li>
-  <li><a href="#">Questions</a></li>
-  <li><a href="#">Community</a></li>
-  <li><a href="#">Help</a></li>
-</ul>
-  </nav>
-  {{> user-profile-nav }}
-  {{> search-bar }}
+  <div class="navbar main-nav">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="brand" href="#">World Vuze</a>
+        <nav id="mainNav">
+          <ul class="nav">
+              <li><a>My Dashboard</a></li>
+              <li><a>My Profile</a></li>
+              <li><a>Classrooms</a></li>
+          </ul>
+        </nav>
+        <ul class="nav pull-right">
+            <li><a class="logout">Logout</a></li>
+        </ul>
+          {{> search-bar }}
+      </div>
     </div>
   </div>
-    
-</div>
 </template>
