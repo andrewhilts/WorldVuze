@@ -30,7 +30,7 @@ Meteor.methods({
       }
 
       Meteor.call('login_user', current_user, password);//, function(error, result){
-      return current_user;    
+      return current_user;
   },
   create_user: function(username, type){
       var new_user = {'username': username, 'type': type};
@@ -46,12 +46,11 @@ Meteor.methods({
   login_user: function (current_user, password) {
     User.insert({'type_id': current_user._id, 'username': current_user.username, 'password': password, 'type': current_user.type});
     Session.set('WorldVuze', current_user);
-
     if (Meteor.is_client) {
-      
-      $(document).find('[role=main]').replaceWith(Template.home({
-        'username': Session.get('WorldVuze').username,
 
+      $(document).find('[role=main]').replaceWith(Template.dashboard({
+        'username': Session.get('WorldVuze').username,
+        'activities': Activity.find({})
       }));
     }
   }

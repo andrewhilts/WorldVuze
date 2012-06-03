@@ -1,4 +1,5 @@
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -7,15 +8,18 @@
     <meta name="author" content="">
 
     <meta name="viewport" content="width=device-width">
+
 </head>
 <body>
-{{> nav}}
-<section class="container">
-<div role="main">
-    {{> login}}
-</div>
-</section>
-{{> footer}}
-
+    <div id="map"></div>
+    {{> nav}}
+    <section class="container">
+    <div role="main">
+        {{> login}}
+        {{> question}}
+        {{> thread_controls}}
+    </div>
+    </section>
+    {{> user_profile}}
+    {{> footer}}
 </body>
-
