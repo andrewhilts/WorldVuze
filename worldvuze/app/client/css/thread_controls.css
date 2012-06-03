@@ -1,0 +1,11 @@
+.thread-controls .control-label {
+  width:80px;
+}
+
+.thread-controls .controls {
+  margin-left:100px;
+}
+
+.thread-controls .label {
+  cursor:pointer;
+}

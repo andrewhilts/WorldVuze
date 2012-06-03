@@ -1,0 +1,35 @@
+#main-search {
+  float:right;
+}
+#userProfileNav {
+  float:right;
+  margin-left:2em;
+}
+
+.thread.collapsed {
+  padding-top:0.8em;
+  padding-bottom:0.8em;
+}
+
+.thread.collapsed .question, .thread.collapsed .date {
+  opacity:0.6;
+  font-size:0.8em;
+}
+
+.thread.collapsed > div {
+  display:none;
+}
+
+.thread > .control-box {
+  margin-top:15px;
+  display: block;
+}
+.control-box > .comments {
+  margin-right:10px;
+  margin-top:5px;
+  display:block;
+  float:left;
+}
+.control-box > .meta {
+  float:right;
+}

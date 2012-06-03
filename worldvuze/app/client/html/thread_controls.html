@@ -1,0 +1,46 @@
+<template name="thread_controls">
+  <div class="span4 thread-controls">
+  <form class="form-horizontal">
+  <fieldset>
+    <legend>Filter Discussions</legend>
+    <div class="control-group">
+      <label class="control-label" for="input01">By Country</label>
+      <div class="controls">
+        <select class="span2" multiple="mulitple">
+                <option>Canada</option>
+                <option>Tanzania</option>
+                <option>India</option>
+                <option>Nepal</option>
+                <option>Kuwait</option>
+              </select>
+        <p class="help-block">Show only:</p>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="input01">By Topic</label>
+      <div class="controls">
+        <input type="text" class="span2">
+        <div class="btn btn-inverse"><i class="icon-ok icon-white"></i></div>
+        <p class="help-block">Type topics to include in results.</p>
+        <div>
+          <span class="label label-info" title="Click to remove.">Water <i class="icon-remove icon-white"></i></span>
+          <span class="label label-info" title="Click to remove.">Fun <i class="icon-remove icon-white"></i></span>
+          <span class="label label-info" title="Click to remove.">History <i class="icon-remove icon-white"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="input01">By Age group</label>
+      <div class="controls">
+        <select class="span2" multiple="mulitple">
+                <option>5-10</option>
+                <option>10-13</option>
+                <option>14-18</option>
+              </select>
+        <p class="help-block">Select age groups to filter by.</p>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+</template>
