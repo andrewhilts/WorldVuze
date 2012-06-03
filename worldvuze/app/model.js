@@ -53,6 +53,15 @@ Meteor.methods({
         'activities': Activity.find({})
       }));
     }
+  },
+
+  'post_new_question': function(question, user) {
+    var activity_id = Activity.insert({'type': 'question', 'username': user.username, 'user_type': user.type, 'text': question});
+    if (Meteor.is_client) {
+      $(document).find('[role=main]').replaceWith(Template.question({
+        'activity': Activity.findOne({'_id': activity_id})
+      }));
+    }
   }
 });
 

@@ -1,6 +1,9 @@
 <template name="dashboard">
  <div role="main">
-    <h1>Welcome {{username}}!</h1>
+    <div>
+        <h1 class="pull-left">Welcome {{username}}!</h1>
+        <button class="new_topic pull-right btn btn-primary">Post New Topic</button>
+    </div>
 
     <ul class="activity">
         {{#each activities}}
