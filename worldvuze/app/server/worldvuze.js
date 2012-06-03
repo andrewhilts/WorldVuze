@@ -6,8 +6,7 @@ Meteor.methods({
       if (!current_user) {
         current_user = Meteor.call('create_user',username, name, password, type);
       } else if (current_user.password != password) {
-        //change the login template to display invalid password
-
+        notify("Incorrect password");
         return;
       }
       Meteor.call('login_user',current_user, password);
@@ -15,17 +14,13 @@ Meteor.methods({
   create_user: function(username, name, type){
       new_user = {'username': username, 'name': name, 'type': type};
       var id = null;
-
       if (type == 'teacher') {
         id = Teacher.insert(new_user);
       } else {
         id = Student.insert(new_user);
-        Meteor.publish('students',function(){this.flush(); return Student.find({});});
       }
-
       new_user._id = id;
       return new_user;
-
   },
   login_user: function (current_user, password) {
       Session.set('WorldVuze', current_user);
