@@ -1,7 +1,7 @@
 User = new Meteor.Collection('users');
 
 Meteor.methods({
-  sign_up_user: function(username, name, password, type){
+  sign_up_user: function(username, password, type){
       var current_user = User.findOne({'username': username});
       if (!current_user) {
         current_user = Meteor.call('create_user',username, name, password, type);
@@ -24,8 +24,6 @@ Meteor.methods({
   },
   login_user: function (current_user, password) {
       Session.set('WorldVuze', current_user);
-      console.log('here');
-      console.log(Student.find(current_user._id).fetch());
       if (Meteor.is_server) {
         User.insert({'type_id': current_user.id, 'username': current_user.username, 'password': current_user, 'type': current_user.type});
       }

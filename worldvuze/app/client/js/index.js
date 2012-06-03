@@ -5,7 +5,17 @@ notify: function(input){
 Meteor.methods({
 
 });
+// Attach events to keydown, keyup, and blur on "New list" input box.
+Template.login.events = {
+  'submit form': function(event) {
+    event.preventDefault();
+    console.log(event.target)
 
+    //invoke the signup user method
+    //sign_up_user: function(username, name, password, type){
+    Meteor.call('sign_up_user', $(event.target).find('input[name=username]').val(), $(event.target).find('input[name=password]').val(), $(event.target).find('input[name=type]').val());
+  }
+}
 
 
 //////
