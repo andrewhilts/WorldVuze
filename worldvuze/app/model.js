@@ -47,8 +47,13 @@ Meteor.methods({
     User.insert({'type_id': current_user._id, 'username': current_user.username, 'password': password, 'type': current_user.type});
     Session.set('WorldVuze', current_user);
 
-    //change the template
-    $(document).find('[role=main]').replaceWith(Template.home);
+    if (Meteor.is_client) {
+      
+      $(document).find('[role=main]').replaceWith(Template.home({
+        'username': Session.get('WorldVuze').username,
+
+      }));
+    }
   }
 });
 
