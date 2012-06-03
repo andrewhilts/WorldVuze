@@ -29,6 +29,20 @@ Template.location.build_map = function(lat,lng){
   lat: lat,
   lng: lng});
 };
+
+Template.question.questions = function(){
+  posts = [];
+  for(i=0; i<10; i++){
+    posts.push({
+      subject: "What's life like where I live?",
+      replies: 12,
+      username: 'zim',
+      collapsed: ""
+    });
+  }
+  posts[3].collapsed = "collapsed";
+  return posts;
+};
 //////
 ////// Initialization
 //////
