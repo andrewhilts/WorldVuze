@@ -1,0 +1,39 @@
+<template name="thread">
+  <li class="thread well">
+    <h3 class="question">What's life like where I live?</h3>
+    <div class="time">Updated: Just now!</div>
+    <a href="#" class="watch"><i class="icon-eye-open watch"></i></a>
+    <div>Lorem ipsum dolor sit consequetor bacon ipsum salamander nunchuku bbq. Vandelay industries latex manufacturer. [...]</div>
+  <div class="control-box">
+    <span class="comments"><i class="icon-comment"></i> 12</span>
+    <button class="btn cta btn-inverse">Discuss &raquo;</button>
+    <div class="meta">
+    <div class="countries"><i class="icon-globe"></i>Participants from 3 countries.</div>
+  </div>
+  </div>
+  </li>
+</template>
+
+<template name="threads">
+<h2>Topics</h2>
+<ul class="topic-list unstyled span5">
+{{> thread}}
+<li class="thread well collapsed">
+    <h3 class="question">What's life like where I live?!</h3>
+    <span class="time">hidden</span>
+    <a href="#" class="watch"><i class="icon-eye-close"></i></a>
+    <div>Lorem ipsum dolor sit consequetor bacon ipsum salamander nunchuku bbq. Vandelay industries latex manufacturer. [...]</div>
+  <div class="control-box">
+    <span class="comments"><i class="icon-comment"></i> 12</span>
+    <button class="btn cta btn-inverse">Discuss &raquo;</button>
+    <div class="meta">
+    <div class="countries">Participants from 3 countries</div>
+  </div>
+  </div>
+  </li>
+{{> thread}}
+{{> thread}}
+{{> thread}}
+{{> thread}}
+</ul>
+</template>
