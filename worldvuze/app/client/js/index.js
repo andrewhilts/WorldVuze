@@ -48,6 +48,11 @@ Template.nav.events = {
     $(document).find('[role=main]').replaceWith(Template.user_profile({
       'username': Session.get('WorldVuze').username
     }));
+    $("#map").gMap({ markers: [{ latitude: 43.690893,
+                              longitude: -79.408085,
+                              html: "Bishop Strachan School",
+                              popup: true }],
+                  zoom: 12 });
   },
 
   'click .dashboard': function(event) {

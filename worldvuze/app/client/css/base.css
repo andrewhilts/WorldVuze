@@ -5,6 +5,9 @@
   float:right;
   margin-left:2em;
 }
+.brand img {
+  margin-top:-5px;
+}
 
 .thread.collapsed {
   padding-top:0.8em;
@@ -46,3 +49,5 @@
 .profile .dl-horizontal dd {
   margin-left:70px;
 }
+
+#map {height:300px;}
