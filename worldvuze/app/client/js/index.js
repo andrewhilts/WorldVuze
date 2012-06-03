@@ -32,6 +32,8 @@ Template.location.locations = function(){
 };
 
 
+
+
 Template.location.build_map = function(lat,lng){
   //gmap.js library
   map.addMarker({
