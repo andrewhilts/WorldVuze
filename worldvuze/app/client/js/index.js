@@ -10,7 +10,6 @@ Template.login.events = {
   }
 }
 
-
 //////
 ////// Initialization
 //////
