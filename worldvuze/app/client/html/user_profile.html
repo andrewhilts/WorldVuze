@@ -1,5 +1,5 @@
 <template name="user_profile">
-<div class="row-fluid">
+<div role="main" class="row-fluid">
   <div class="span12">
       <div class="row show-grid">
           <div class="topic-list unstyled span5 thread well">
@@ -7,13 +7,7 @@
             <img src="profile.gif" width="160px"/>
             <dl class="dl-horizontal well">
                 <dt>Name</dt>
-                <dd> Jane Smith</dd>
-                <dt>Age</dt>
-                <dd>12</dd>
-                <dt>Location</dt>
-                <dd>Toronto, Ontario</dd>
-                <dt>School</dt>
-                <dd>Bishop Strachan School</dd>
+                <dd>{{username}}</dd>
              </dl>
           </div>
           <div class="topic-list unstyled span6 well"></div>

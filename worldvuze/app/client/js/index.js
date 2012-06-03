@@ -14,8 +14,24 @@ Template.nav.events = {
     event.preventDefault();
     $(document).find('[role=main]').replaceWith(Template.login());
     Session.set('WorldVuze', null);
+  },
+
+  'click .profile': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.user_profile({
+      'username': Session.get('WorldVuze').username
+    }));
+  },
+
+  'click .dashboard': function(event) {
+    event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.dashboard({
+      'username': Session.get('WorldVuze').username,
+      'activities': Activity.find({})
+    }));
   }
 }
+
 
 Template.location.locations = function(){
   var list_of_locs = [];
