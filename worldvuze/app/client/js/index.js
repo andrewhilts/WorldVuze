@@ -12,6 +12,7 @@ Template.login.events = {
 Template.nav.events = {
   'click .logout': function(event) {
     event.preventDefault();
+    $(document).find('[role=main]').replaceWith(Template.login());
     Session.set('WorldVuze', null);
   }
 }
