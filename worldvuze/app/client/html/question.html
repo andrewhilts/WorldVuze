@@ -14,6 +14,22 @@
         <div class="countries"><i class="icon-globe"></i>Participants from 3 countries.</div>
       </div>
     </div>
+    {{#if hasReplies}}
+    <div class="replies">
+      <div class="thread well {{collapsed}}">
+        <h3 class="question">{{subject}}</h3>
+        <div class="user">{{username}}</div>
+      </div>
+    <ul class="unstyled replies-list">
+    {{#each list_of_activities}}
+      <li>
+        <div class="user">{{username}}</div>
+        <div class="text">{{text}}</div>
+      </li>
+    {{/each}}
+    </ul>
+    </div>
+    {{/if}}
   </li>
 {{/each}}
 </ul>
