@@ -41,4 +41,9 @@ Meteor.startup(function () {
   } else {
     console.log('not logged in')
   }
+     $("#map").gMap({ markers: [{ latitude: 43.690893,
+                              longitude: -79.408085,
+                              html: "Bishop Strachan School",
+                              popup: true }],
+                  zoom: 12 });
 });
