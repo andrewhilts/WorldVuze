@@ -1,11 +1,8 @@
 <template name="home">
  <div role="main">
     <h1>Welcome {{username}}!</h1>
-
-    <ul class="activity">
-        {{#each activities}}
-            {{> a}}
-          {{/each}}
-    </li>
+    <div class="activity">
+    {{{nested_activities}}}
+</div>
 </div>
 </template>

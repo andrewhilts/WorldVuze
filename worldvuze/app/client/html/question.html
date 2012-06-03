@@ -1,37 +1,5 @@
 <template name="question">
-<section class="question_container">
-<h2>Discussions</h2>
-<ul class="topic-list unstyled span5">
-{{#each getQuestions}}
-  <li class="thread well {{collapsed}}" id="{{uid}}">
-    <h3 class="question">{{subject}}</h3>
-    <div class="user">{{username}}</div>
-      <a href="#" class="watch"><i class="icon-eye-open watch"></i></a>
-      <div class="control-box">
-        <span class="comments"><i class="icon-comment"></i> {{replies}}</span>
-        <button class="btn cta btn-inverse discuss">Discuss &raquo;</button>
-        <div class="meta">
-        <div class="countries"><i class="icon-globe"></i>Participants from 3 countries.</div>
-      </div>
+    <div role="main">
+        <h1>{{activity.text}}</h1>
     </div>
-    {{#if hasReplies}}
-    <div class="replies">
-      <div class="thread well {{collapsed}}">
-        <h3 class="question">{{subject}}</h3>
-        <div class="user">{{username}}</div>
-      </div>
-    <ul class="unstyled replies-list">
-    {{#each list_of_activities}}
-      <li>
-        <div class="user">{{username}}</div>
-        <div class="text">{{text}}</div>
-      </li>
-    {{/each}}
-    </ul>
-    </div>
-    {{/if}}
-  </li>
-{{/each}}
-</ul>
-</section>
 </template>
