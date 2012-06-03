@@ -36,10 +36,16 @@ Template.nav.events = {
     $(document).find('[role=main]').replaceWith(Template.user_profile({
       'username': Session.get('WorldVuze').username
     }));
+    $("#map").gMap({ markers: [{ latitude: 43.690893,
+                              longitude: -79.408085,
+                              html: "Bishop Strachan School",
+                              popup: true }],
+                  zoom: 12 });
   },
 
   'click .dashboard': function(event) {
     event.preventDefault();
+    console.log('hjere');
     $(document).find('[role=main]').replaceWith(Template.dashboard({
       'username': Session.get('WorldVuze').username,
       'activities': Activity.find({})
@@ -126,16 +132,17 @@ Template.user_profile.getProfile = function(){
 //////
 
 Meteor.startup(function () {
+  if (!Teacher.find({'username': 'admin'}).fetch().length) {
+    teacher_id = Teacher.insert({'username': 'admin'});
+    activity_id = Activity.insert({'type': 'question', 'creator_id': teacher_id, 'text': 'What is the problem with water quality in Ontario?', 'username': 'admin', 'user_type': 'teacher'})
+    Teacher.update({'_id': teacher_id}, {$addToSet: {'activities': [activity_id]}});
+  }
+
   if(Session.get('WorldVuze')) {
     $(document).find('[role=main]').replaceWith(Template.dashboard({
       'username': Session.get('WorldVuze').username,
       'activities': Activity.find({})
     }));
   }
-     $("#map").gMap({ markers: [{ latitude: 43.690893,
-                              longitude: -79.408085,
-                              html: "Bishop Strachan School",
-                              popup: true }],
-                  zoom: 12 });
 });
 

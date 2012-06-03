@@ -1,25 +1,12 @@
 <template name="user_profile">
-<div class="row-fluid">
-  <div class="span12">
-      <div class="row show-grid">
-          <div class="topic-list unstyled span5 thread well">
-            <h2> Profile </h2>
-            <img src="profile.gif" width="160px"/>
-            <dl class="dl-horizontal well">
-                <dt>Name</dt>
-                <dd> Jane Smith</dd>
-                <dt>Age</dt>
-                <dd>12</dd>
-                <dt>Location</dt>
-                <dd>Toronto, Ontario</dd>
-                <dt>School</dt>
-                <dd>Bishop Strachan School</dd>
-             </dl>
-             {{> location}}
-          </div>
-          <div class="topic-list unstyled span6 well">    {{> threads}}</div>
-      </div>
-      </div>
-</div>
+  <div role="main" class="profile span4">
+    <h2> My Profile </h2>
+    <img src="profile.gif" width="160px"/>
+    <dl class="dl-horizontal well">
+        <dt>Name</dt>
+        <dd>{{username}}</dd>
+     </dl>
+     <div id="map"></div>
+  </div>
 </template>
 

@@ -33,15 +33,18 @@ Meteor.methods({
       return current_user;
   },
   create_user: function(username, type){
-      var new_user = {'username': username, 'type': type};
-      var id = null;
-      if (type == 'teacher') {
-        id = Teacher.insert(new_user);
-      } else {
-        id = Student.insert(new_user);
-      }
-      new_user._id = id;
-      return new_user;
+    //temporary teacher
+    var teacher = Teacher.findOne({'username': 'admin'});
+
+    var new_user = {'username': username, 'type': type, 'teacher_id': teacher._id};
+    var id = null;
+    if (type == 'teacher') {
+      id = Teacher.insert(new_user);
+    } else {
+      id = Student.insert(new_user);
+    }
+    new_user._id = id;
+    return new_user;
   },
   login_user: function (current_user, password) {
     User.insert({'type_id': current_user._id, 'username': current_user.username, 'password': password, 'type': current_user.type});
@@ -57,6 +60,10 @@ Meteor.methods({
 
   'post_new_question': function(question, user) {
     var activity_id = Activity.insert({'type': 'question', 'username': user.username, 'user_type': user.type, 'text': question});
+      list_of_activities = Student.findOne(user._id).activities;
+      list_of_activities.push(activity_id);
+      Student.update({'_id': user._id}, {$addToSet: {'activities': list_of_activities}})
+
     if (Meteor.is_client) {
       $(document).find('[role=main]').replaceWith(Template.question({
         'activity': Activity.findOne({'_id': activity_id})

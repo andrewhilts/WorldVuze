@@ -1,32 +1,14 @@
-Handlebars.registerHelper('nested_activities', function(list_of_activities) {
-  return maketree(list_of_activities);
+Handlebars.registerHelper('nested_activities', function() {
+  return maketree(getQuestions(Session.get('WorldVuze').teacher_id));
 }),
 
-getQuestions = function(){
-  questions = [];
-  for(i=0; i<10; i++){
-    questions.push({
-      _id: Math.floor((Math.random()*10000)+1),
-      subject: "What's life like where I live?",
-      text: "What's life like where I live?",
-      replies: 12,
-      username: 'zim',
-      collapsed: "",
-      list_of_activities: {}
-    });
-  }
-  comments = [];
-  for(i=0; i<5; i++){
-    comments.push({
-      _id: Math.floor((Math.random()*10000)+1),
-      text: "Wgdfyteasdf  dsaf asdf asf asf as asdaf as fdsaf dsaf dsafsa",
-      replies: 12,
-      username: 'zim',
-      collapsed: ""
-    });
-  }
-  questions[3].collapsed = "collapsed";
-  questions[4].list_of_activities = comments;
+
+
+getQuestions= function(teacher_id){
+  teacher_id = "6736d5a9-56f6-4117-b5a7-179f3a76994b";
+  questions = Teacher.findOne(teacher_id).activities;
+  //id, subject, text,replies,username,collapsed,list_of_activites
+  //comments = id, text,replies,username,collapsed
   for(i in questions){
     if(questions[i].list_of_activities.length > 0){
       questions[i].hasReplies = true;
@@ -40,9 +22,11 @@ getQuestions = function(){
 
 maketree= function(list_of_activities){
   var out = '<section class="question_container"> <h2>Discussions</h2> <ul class="topic-list unstyled span5">';
-  var q = getQuestions();
+  var q = list_of_activities;
+  alert(list_of_activities);
  for(i=0;i<q.length; i++)
  {
+  alert("^^^");
   out +=  '<li class="thread well' + q[i].collapsed + '"id="{{uid}}">';
   out +=  '<h3 class="question">'+q[i].subject+'</h3>';
   out +=  '<div class="user">'+q[i].username+'</div>';
