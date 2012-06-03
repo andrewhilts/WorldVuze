@@ -8,15 +8,9 @@ Meteor.methods({
         current_user = Meteor.call('create_user',username, type);
       } else if (current_user.password != password) {
         //change the login template to display invalid password
-        throw new Meteor.error(404, 'Password Incorrect');
         return 'Password Incorrect';
       }
-
-      Meteor.call('login_user', current_user, password, function(error, result){
-       if(error) {
-          throw new Meteor.error('500', result)
-        }
-      });
+      Meteor.call('login_user', current_user, password);
   },
   create_user: function(username, type){
       new_user = {'username': username, 'type': type};
