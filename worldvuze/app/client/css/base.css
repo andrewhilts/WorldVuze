@@ -33,3 +33,16 @@
 .control-box > .meta {
   float:right;
 }
+
+.profile {
+  background:rgba(182,205,146,0.3);
+  padding:10px 20px;
+}
+
+.profile .dl-horizontal dt {
+  width:60px;
+}
+
+.profile .dl-horizontal dd {
+  margin-left:70px;
+}
