@@ -1,15 +1,27 @@
 $(document).ready(function(){
-  
+
   $(document).delegate('.new_topic', 'click', function(event){
     event.preventDefault();
     $(document).find('[role=main]').replaceWith(Template.new_topic());
-  })
+  });
+  $(document).delegate('.new_comment', 'click', function(event){
+    event.preventDefault();
+    $(document).find('[role=main]').append(Template.new_comment());
+  });
 
   $(document).delegate('form[name=new_topic]', 'submit', function(event){
       event.preventDefault();
       var form = $('form[name=new_topic]')[0];
       Meteor.call('post_new_question', form.question.value, Session.get('WorldVuze'));
-  })
+  });
+
+    $(document).delegate('form[name=new_comment]', 'submit', function(event){
+      event.preventDefault();
+      var form = $('form[name=new_comment]')[0];
+      alert(Session.get('topic_id'));
+      Meteor.call('post_new_comments', form.comment.value, Session.get('WorldVuze'), Session.get('topic_id'));
+  });
+
 
 })
 
@@ -127,11 +139,10 @@ Template.user_profile.getProfile = function(){
 //////
 
 Meteor.startup(function () {
-  if (!Teacher.find({'username': 'admin'}).fetch().length) {
-    teacher_id = Teacher.insert({'username': 'admin'});
+    teacher_id = "029d82ca-8946-4207-80c0-ab5ef4aec009";
     activity_id = Activity.insert({'type': 'question', 'creator_id': teacher_id, 'text': 'What is the problem with water quality in Ontario?', 'username': 'admin', 'user_type': 'teacher'})
     Teacher.update({'_id': teacher_id}, {$addToSet: {'activities': [activity_id]}});
-  }
+      Session.set('topic_id', activity_id);
 
   if(Session.get('WorldVuze')) {
     $(document).find('[role=main]').replaceWith(Template.dashboard({

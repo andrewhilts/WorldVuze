@@ -65,11 +65,31 @@ Meteor.methods({
       Student.update({'_id': user._id}, {$addToSet: {'activities': list_of_activities}})
 
     if (Meteor.is_client) {
-      $(document).find('[role=main]').replaceWith(Template.question({
-        'activity': Activity.findOne({'_id': activity_id})
+      $(document).find('[role=main]').replaceWith(Template.dashboard({
+        'username': Session.get('WorldVuze').username,
+        'activities': Activity.find({})
+      }));
+    }
+  },
+
+ 'post_new_comments': function( comment, user, id) {
+    var activity_id = Activity.insert({'type': 'comment', 'username': user.username, 'user_type': user.type, 'text': comment});
+    var list_of_activities = [];
+
+    if(Activity.findOne(id)['activities']){list_of_activities =Activity.findOne(id).activities;}
+    list_of_activities.push(activity_id);
+    console.log(list_of_activities);
+    console.log(id);
+    if(list_of_activities){
+    Activity.update({'_id': id}, {$addToSet:{'activities': list_of_activities}});}
+
+      if (Meteor.is_client) {
+      $(document).find('[role=main]').replaceWith(Template.dashboard({
+        'username': Session.get('WorldVuze').username
       }));
     }
   }
+
 });
 
 
