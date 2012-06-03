@@ -1,8 +1,9 @@
 <template name="question">
+<section class="question_container">
 <h2>Discussions</h2>
 <ul class="topic-list unstyled span5">
-{{#each questions}}
-  <li class="thread well {{collapsed}}">
+{{#each getQuestions}}
+  <li class="thread well {{collapsed}}" id="{{uid}}">
     <h3 class="question">{{subject}}</h3>
     <div class="user">{{username}}</div>
       <a href="#" class="watch"><i class="icon-eye-open watch"></i></a>
@@ -16,4 +17,5 @@
   </li>
 {{/each}}
 </ul>
+</section>
 </template>

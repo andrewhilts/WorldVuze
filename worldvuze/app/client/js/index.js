@@ -30,24 +30,27 @@ Template.location.build_map = function(lat,lng){
   lng: lng});
 };
 
-Template.question.questions = function(){
-  posts = [];
+
+Template.question.getQuestions = function(){
+  questions = [];
   for(i=0; i<10; i++){
-    posts.push({
+    questions.push({
+      uid: Math.floor((Math.random()*10000)+1),
       subject: "What's life like where I live?",
       replies: 12,
       username: 'zim',
       collapsed: ""
     });
   }
-  posts[3].collapsed = "collapsed";
-  return posts;
+  questions[3].collapsed = "collapsed";
+  return questions;
 };
 //////
 ////// Initialization
 //////
 
 Meteor.startup(function () {
+
   if (Session.get('WorldVuze')) {
     console.log("logged in")
   } else {
