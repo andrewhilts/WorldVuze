@@ -9,6 +9,13 @@ Template.login.events = {
   }
 };
 
+Template.nav.events = {
+  'click .logout': function(event) {
+    event.preventDefault();
+    Session.set('WorldVuze', null);
+  }
+}
+
 Template.location.locations = function(){
   var list_of_locs = [];
 
@@ -27,16 +34,13 @@ Template.location.build_map = function(lat,lng){
   //gmap.js library
   map.addMarker({
   lat: lat,
-  lng: lng;});
+  lng: lng});
 };
 //////
 ////// Initialization
 //////
 
 Meteor.startup(function () {
-  if (Session.get('WorldVuze')) {
-    console.log("logged in")
-  } else {
-    console.log('not logged in')
-  }
+  
 });
+
