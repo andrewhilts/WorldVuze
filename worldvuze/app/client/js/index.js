@@ -27,7 +27,7 @@ Template.location.build_map = function(lat,lng){
   //gmap.js library
   map.addMarker({
   lat: lat,
-  lng: lng;});
+  lng: lng});
 };
 //////
 ////// Initialization
