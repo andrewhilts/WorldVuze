@@ -9,7 +9,7 @@ Template.login.events = {
   }
 };
 
-Template.location.locations = function(){
+T = function(){
   var list_of_locs = [];
 
   var get_location = function(location){
@@ -21,6 +21,8 @@ Template.location.locations = function(){
   }
   return list_of_locs;
 };
+
+
 
 
 Template.location.build_map = function(lat,lng){
