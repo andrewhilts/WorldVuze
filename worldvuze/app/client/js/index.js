@@ -52,7 +52,7 @@ Template.question.getQuestions = function(){
     questions.push({
       _id: Math.floor((Math.random()*10000)+1),
       subject: "What's life like where I live?",
-      text: "What's life like where I live?",
+      question: "What's life like where I live?",
       replies: 12,
       username: 'zim',
       collapsed: "",
@@ -63,7 +63,7 @@ Template.question.getQuestions = function(){
   for(i=0; i<5; i++){
     comments.push({
       _id: Math.floor((Math.random()*10000)+1),
-      text: "Wgdfyteasdf  dsaf asdf asf asf as asdaf as fdsaf dsaf dsafsa",
+      comment: "Wgdfyteasdf  dsaf asdf asf asf as asdaf as fdsaf dsaf dsafsa",
       replies: 12,
       username: 'zim',
       collapsed: ""
