@@ -40,6 +40,7 @@ Template.nav.events = {
 
   'click .dashboard': function(event) {
     event.preventDefault();
+    console.log('hjere');
     $(document).find('[role=main]').replaceWith(Template.dashboard({
       'username': Session.get('WorldVuze').username,
       'activities': Activity.find({})
@@ -126,6 +127,10 @@ Template.user_profile.getProfile = function(){
 //////
 
 Meteor.startup(function () {
+  if (!Teacher.find({'username': 'admin'}).fetch().length) {
+    Teacher.insert({'username': 'admin'});
+  }
+
   if(Session.get('WorldVuze')) {
     $(document).find('[role=main]').replaceWith(Template.dashboard({
       'username': Session.get('WorldVuze').username,
